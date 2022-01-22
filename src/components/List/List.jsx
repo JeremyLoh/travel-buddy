@@ -8,10 +8,12 @@ import {
     FormControl,
     Select
 } from "@material-ui/core"
+import { nanoid } from "nanoid"
+import PlaceDetails from "../PlaceDetails/PlaceDetails"
 
 import useStyles from "./styles"
 
-function List() {
+function List({ places }) {
     const classes = useStyles()
     const [type, setType] = useState("restaurants")
     const [rating, setRating] = useState("")
@@ -36,6 +38,19 @@ function List() {
                     <MenuItem value={4.5}>Above 4.5</MenuItem>
                 </Select>
             </FormControl>
+            <Grid
+                className={classes.list}
+                container
+                spacing={2}
+            >
+                {places?.map((place) => {
+                    return (
+                        <Grid item key={nanoid()} xs={12}>
+                            <PlaceDetails place={place} />
+                        </Grid>
+                    )
+                })}
+            </Grid>
         </div>
     )
 }
