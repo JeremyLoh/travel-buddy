@@ -1,14 +1,14 @@
 import axios from "axios"
 import { nanoid } from "nanoid"
 
-const LIST_RESTAURANT_PLACES_URL = "https://travel-advisor.p.rapidapi.com/restaurants/list-in-boundary"
 
-export async function getPlaces(sw, ne) {
+export async function getPlaces(type, sw, ne) {
     try {
+        const LIST_PLACES_URL = `https://travel-advisor.p.rapidapi.com/${type}/list-in-boundary`
         const options = {
             headers: {
                 "x-rapidapi-host": "travel-advisor.p.rapidapi.com",
-                "x-rapidapi-key": "ADD_API_KEY_FROM_RAPID_API"
+                "x-rapidapi-key": "ADD_API_KEY_FROM_RAPID_API",
             },
             params: {
                 bl_latitude: sw.lat,
@@ -22,7 +22,7 @@ export async function getPlaces(sw, ne) {
                 lang: "en_US"
             },
         }
-        const response = await axios.get(LIST_RESTAURANT_PLACES_URL, options)
+        const response = await axios.get(LIST_PLACES_URL, options)
         console.log("getPlaces data -->", response.data.data)
         return response.data.data
             .filter((place) => place.address != null)

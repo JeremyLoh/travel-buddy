@@ -480,13 +480,13 @@ function App() {
         setPlaces(data)
         setIsLoading(false)
 
-        // getPlaces(bounds.sw, bounds.ne)
+        // getPlaces(type, bounds.sw, bounds.ne)
         //  .then((data) => {
         //         console.log("App useEffect data -->", data)
         //         setPlaces(data)
         //         setIsLoading(false)
         //     })
-    }, [coordinates, bounds])
+    }, [coordinates, bounds, type])
 
     return (
         <>
