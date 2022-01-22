@@ -14,6 +14,7 @@ function isEmpty(obj) {
 
 function App() {
     const [places, setPlaces] = useState([])
+    const [filteredPlaces, setFilteredPlaces] = useState([])
     const [coordinates, setCoordinates] = useState({})
     const [bounds, setBounds] = useState({})
     const [mapMarkerClicked, setMapMarkerClicked] = useState(null)
@@ -26,6 +27,11 @@ function App() {
             setCoordinates({lat: latitude, lng: longitude})
         })
     }, [])
+
+    useEffect(() => {
+        const filteredPlaces = places?.filter((place) => Number(place.rating) >= rating)
+        setFilteredPlaces(filteredPlaces || [])
+    }, [rating])
 
     useEffect(() => {
         console.log(coordinates, bounds)
@@ -478,12 +484,14 @@ function App() {
           },
         ]
         setPlaces(data)
+        setFilteredPlaces([])
         setIsLoading(false)
 
         // getPlaces(type, bounds.sw, bounds.ne)
         //  .then((data) => {
         //         console.log("App useEffect data -->", data)
         //         setPlaces(data)
+        //         setFilteredPlaces([])
         //         setIsLoading(false)
         //     })
     }, [coordinates, bounds, type])
@@ -501,7 +509,7 @@ function App() {
                         setRating,
                     }}>
                         <List
-                          places={places}
+                          places={filteredPlaces.length ? filteredPlaces : places}
                           mapMarkerClicked={mapMarkerClicked}
                           isLoading={isLoading}
                         />
@@ -513,7 +521,7 @@ function App() {
                         setCoordinates={setCoordinates}
                         setBounds={setBounds}
                         coordinates={coordinates}
-                        places={places}
+                        places={filteredPlaces.length ? filteredPlaces : places}
                         setMapMarkerClicked={setMapMarkerClicked}
                     />
                 </Grid>
