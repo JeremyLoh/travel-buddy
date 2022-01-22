@@ -6,6 +6,8 @@ import List from "./components/List/List"
 import Map from "./components/Map/Map"
 import { getPlaces } from "./api"
 
+export const PlaceContext = React.createContext()
+
 function isEmpty(obj) {
     return Object.keys(obj).length === 0
 }
@@ -16,6 +18,8 @@ function App() {
     const [bounds, setBounds] = useState({})
     const [mapMarkerClicked, setMapMarkerClicked] = useState(null)
     const [isLoading, setIsLoading] = useState(false)
+    const [type, setType] = useState("restaurants")
+    const [rating, setRating] = useState("")
 
     useEffect(() => {
         navigator.geolocation.getCurrentPosition(({coords: {latitude, longitude}}) => {
@@ -490,11 +494,18 @@ function App() {
             <Header />
             <Grid container spacing={2}>
                 <Grid item xs={12} md={4}>
-                    <List
-                      places={places}
-                      mapMarkerClicked={mapMarkerClicked}
-                      isLoading={isLoading}
-                    />
+                    <PlaceContext.Provider value={{
+                        type,
+                        setType,
+                        rating,
+                        setRating,
+                    }}>
+                        <List
+                          places={places}
+                          mapMarkerClicked={mapMarkerClicked}
+                          isLoading={isLoading}
+                        />
+                    </PlaceContext.Provider>
                 </Grid>
 
                 <Grid item xs={12} md={8}>

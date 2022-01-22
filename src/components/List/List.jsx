@@ -1,4 +1,4 @@
-import React, { useState, createRef, useEffect } from "react"
+import React, { useState, createRef, useEffect, useContext } from "react"
 import { 
     Grid,
     CircularProgress,
@@ -9,13 +9,18 @@ import {
     Select
 } from "@material-ui/core"
 import PlaceDetails from "../PlaceDetails/PlaceDetails"
+import { PlaceContext } from "../../App"
 
 import useStyles from "./styles"
 
 function List({ places, mapMarkerClicked, isLoading }) {
     const classes = useStyles()
-    const [type, setType] = useState("restaurants")
-    const [rating, setRating] = useState("")
+    const {
+        type,
+        setType,
+        rating,
+        setRating,
+    } = useContext(PlaceContext)
     const [placesRefs, setPlacesRefs] = useState([])
     
     useEffect(() => {
