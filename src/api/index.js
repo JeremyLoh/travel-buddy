@@ -1,4 +1,5 @@
 import axios from "axios"
+import { nanoid } from "nanoid"
 
 const LIST_RESTAURANT_PLACES_URL = "https://travel-advisor.p.rapidapi.com/restaurants/list-in-boundary"
 
@@ -24,6 +25,13 @@ export async function getPlaces(sw, ne) {
         const response = await axios.get(LIST_RESTAURANT_PLACES_URL, options)
         console.log("getPlaces data -->", response.data.data)
         return response.data.data
+            .filter((place) => place.address != null)
+            .map((place) => {
+                return {
+                    ...place,
+                    id: nanoid()
+                }
+            })
     } catch (error) {
         console.log("getPlaces error -->", error)
     }
