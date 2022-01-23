@@ -2,6 +2,8 @@
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/34fbe67e-81b9-40be-b016-dc4d59c783c8/deploy-status)](https://app.netlify.com/sites/travel-buddy-jeremyloh/deploys)
 
+![Travel Buddy Screenshot](./app.png)
+
 This application shows nearby restaurants, hotels and attractions in your current location.
 
 You can filter by a minimum rating of a destination as well.
