@@ -8,7 +8,7 @@ export async function getPlaces(type, sw, ne) {
         const options = {
             headers: {
                 "x-rapidapi-host": "travel-advisor.p.rapidapi.com",
-                "x-rapidapi-key": "ADD_API_KEY_FROM_RAPID_API",
+                "x-rapidapi-key": process.env.REACT_APP_RAPIDAPI_TRAVEL_API_KEY,
             },
             params: {
                 bl_latitude: sw.lat,
@@ -23,9 +23,8 @@ export async function getPlaces(type, sw, ne) {
             },
         }
         const response = await axios.get(LIST_PLACES_URL, options)
-        console.log("getPlaces data -->", response.data.data)
         return response.data.data
-            .filter((place) => place.address != null)
+            .filter((place) => place.name != null)
             .map((place) => {
                 return {
                     ...place,
