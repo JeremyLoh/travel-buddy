@@ -31,8 +31,6 @@ function List({ places, mapMarkerClicked, isLoading }) {
         setPlacesRefs(refs)
     }, [places])
 
-    console.log("list mapMarkerClicked", { mapMarkerClicked })
-
     return (
         <div className={classes.container}>
             <Typography variant="h4">Nearby Restaurants, Hotels &amp; Attractions</Typography>
