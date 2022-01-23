@@ -25,7 +25,9 @@ function List({ places, mapMarkerClicked, isLoading }) {
     
     useEffect(() => {
         const refs = Array(places?.length).fill()
-            .map((_, index) => placesRefs[index] || createRef(places[index].id))
+            .map((_, index) => {
+                return placesRefs[index] || createRef(places[index].id)
+            })
         setPlacesRefs(refs)
     }, [places])
 
@@ -64,7 +66,7 @@ function List({ places, mapMarkerClicked, isLoading }) {
                     >
                         {places?.map((place, index) => {
                             return (
-                                <Grid item key={place.id} xs={12}>
+                                <Grid ref={placesRefs[index]} item key={place.id} xs={12}>
                                     <PlaceDetails 
                                         place={place}
                                         placeRef={placesRefs[index]}
