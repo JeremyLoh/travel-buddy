@@ -1,5 +1,7 @@
 # Travel Buddy
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/34fbe67e-81b9-40be-b016-dc4d59c783c8/deploy-status)](https://app.netlify.com/sites/travel-buddy-jeremyloh/deploys)
+
 This application shows nearby restaurants, hotels and attractions in your current location.
 
 You can filter by a minimum rating of a destination as well.
@@ -11,6 +13,14 @@ You can also search for an interested location.
 Map style used: Uber 2017 by Святослав Бойко - https://snazzymaps.com/style/90982/uber-2017
 
 Snazzy Maps - https://snazzymaps.com/
+
+# Building the project
+
+Replace `public/index.html` script for Google Maps with API_KEY
+
+[Restrict API key before deploying the website!](https://www.youtube.com/watch?v=2_HZObVbe-g)
+
+Run `npm run build` and deploy the build folder files onto Netlify!
 
 # Getting Started with Create React App
 
