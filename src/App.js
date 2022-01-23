@@ -50,7 +50,7 @@ function App() {
         <>
             <CssBaseline />
             <Header setCoordinates={setCoordinates} />
-            <Grid container spacing={2}>
+            <Grid container>
                 <Grid item xs={12} md={4}>
                     <PlaceContext.Provider value={{
                         type,
