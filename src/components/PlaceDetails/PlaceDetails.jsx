@@ -41,10 +41,18 @@ function PlaceDetails({ place, placeRef, isSelected }) {
                         out of {place.num_reviews} Reviews
                     </Typography>
                 </Box>
-                <Box display="flex" justifyContent="space-between" alignItems="center">
-                    <Typography variant="subtitle1">Price</Typography>
-                    <Typography gutterBottom variant="subtitle1">{place.price_level}</Typography>
-                </Box>
+                {place?.price_level && 
+                    <Box display="flex" justifyContent="space-between" alignItems="center">
+                        <Typography variant="subtitle1">Price</Typography>
+                        <Typography gutterBottom variant="subtitle1">{place.price_level}</Typography>
+                    </Box>
+                }
+                {place?.price && 
+                    <Box display="flex" justifyContent="space-between" alignItems="center">
+                        <Typography variant="subtitle1">Price Range</Typography>
+                        <Typography gutterBottom variant="subtitle1">{place.price}</Typography>
+                    </Box>
+                }
                 <Box display="flex" justifyContent="space-between" alignItems="baseline">
                     <Typography variant="subtitle1">Ranking</Typography>
                     <Typography gutterBottom variant="subtitle1">{place.ranking}</Typography>
