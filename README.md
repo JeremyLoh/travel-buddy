@@ -8,6 +8,16 @@ You can filter by a minimum rating of a destination as well.
 
 You can also search for an interested location.
 
+# .env variables
+
+Store the following keys in a `.env` file
+
+```
+REACT_APP_GOOGLE_MAPS_API_KEY="YOUR GOOGLE CONSOLE API KEY WITH PERMISSION TO Google Maps JavaScript and Places Api"
+
+REACT_APP_RAPIDAPI_TRAVEL_API_KEY="Your RapidApi key for Travel Advisor"
+```
+
 # References
 
 Map style used: Uber 2017 by Святослав Бойко - https://snazzymaps.com/style/90982/uber-2017
