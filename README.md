@@ -1,3 +1,17 @@
+# Travel Buddy
+
+This application shows nearby restaurants, hotels and attractions in your current location.
+
+You can filter by a minimum rating of a destination as well.
+
+You can also search for an interested location.
+
+# References
+
+Map style used: Uber 2017 by Святослав Бойко - https://snazzymaps.com/style/90982/uber-2017
+
+Snazzy Maps - https://snazzymaps.com/
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
