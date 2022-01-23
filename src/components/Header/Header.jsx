@@ -1,12 +1,30 @@
-import React from "react"
+import React, { useState } from "react"
 import { AppBar, Toolbar, Typography, InputBase, Box } from "@material-ui/core"
 import SearchIcon from "@material-ui/icons/Search"
 import { Autocomplete } from "@react-google-maps/api"
 
 import useStyles from "./styles"
 
-function Header() {
+function Header({ setCoordinates }) {
     const classes = useStyles()
+    const [autocomplete, setAutocomplete] = useState(null)
+
+    function onLoad(autocompleteInstance) {
+        setAutocomplete(autocompleteInstance)
+    }
+
+    function onPlaceChanged() {
+        // Find lat, lng of new location
+        if (autocomplete == null) {
+            return
+        }
+        // Autocomplete getPlace() returns a PlaceResult
+        // https://developers.google.com/maps/documentation/javascript/reference/places-service#PlaceResult
+        const lat = autocomplete.getPlace().geometry.location.lat()
+        const lng = autocomplete.getPlace().geometry.location.lng()
+        setCoordinates({lat, lng})
+    }
+
     return (
         <AppBar position="static">
             <Toolbar className={classes.toolbar}>
@@ -17,7 +35,10 @@ function Header() {
                     <Typography variant="caption">
                         Because I am the size of what I see. And not the size of my own stature.
                     </Typography>
-                    {/* <Autocomplete> */}
+                    <Autocomplete
+                        onLoad={onLoad}
+                        onPlaceChanged={onPlaceChanged}
+                    >
                         <div className={classes.search}>
                             <SearchIcon />
                             <InputBase
@@ -26,7 +47,7 @@ function Header() {
                                 className={classes.searchInput}
                             />
                         </div>
-                    {/* </Autocomplete> */}
+                    </Autocomplete>
                 </Box>
             </Toolbar>
         </AppBar>

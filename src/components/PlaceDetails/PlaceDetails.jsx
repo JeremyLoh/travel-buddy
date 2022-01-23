@@ -18,7 +18,6 @@ import useStyles from "./styles"
 
 function PlaceDetails({ place, placeRef, isSelected }) {
     const classes = useStyles()
-    console.log("isSelected", isSelected)
 
     if (isSelected) {
         placeRef?.current?.scrollIntoView({
